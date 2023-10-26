@@ -4,7 +4,7 @@ use cpal::{
     traits::{DeviceTrait, HostTrait, StreamTrait},
     FromSample, Sample, StreamConfig,
 };
-mod marse_code;
+mod morse_code;
 
 const DOT_DURATION: u64 = 80;
 const DASH_DURATION: u64 = DOT_DURATION * 3;
@@ -76,7 +76,7 @@ pub fn run(device: &cpal::Device, config: cpal::StreamConfig, duration: u64) {
 }
 
 fn morse_code_generator(input: String) -> String {
-    let morse_code_table = marse_code::get_morse_codes();
+    let morse_code_table = morse_code::get_morse_codes();
     let mut result = String::new();
     for word in input.chars() {
         let value = match morse_code_table.get(&word) {
